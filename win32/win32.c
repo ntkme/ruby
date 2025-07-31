@@ -448,7 +448,7 @@ get_special_folder(int n, WCHAR *buf, size_t len)
     LPMALLOC alloc;
     BOOL f = FALSE;
 
-    if (SHGetSpecialFolderLocation(NULL, n, &pidl) == 0) {
+    if (SHGetFolderLocation(NULL, n, NULL, 0, &pidl) == 0) {
         f = SHGetPathFromIDListEx(pidl, buf, len, 0);
         SHGetMalloc(&alloc);
         alloc->lpVtbl->Free(alloc, pidl);
